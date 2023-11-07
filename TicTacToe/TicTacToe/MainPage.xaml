@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TicTacToe.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="40"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Label
+                Text="Tic Tac Toe"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                TextColor="SlateBlue"
+                HorizontalOptions="Center" />
+
+            <Image
+                Source="tic_tac_toe_start.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Start Game"
+                Padding="18"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnClickedStartGame"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

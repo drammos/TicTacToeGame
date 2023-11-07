@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:box="clr-namespace:TicTacToe.Box"
+             xmlns:view="clr-namespace:TicTacToe.View"
+             x:Class="TicTacToe.StartGame"
+             >
+
+
+    <VerticalStackLayout VerticalOptions="CenterAndExpand" Padding="10" Spacing="20">
+
+        <Frame BackgroundColor="SlateBlue" 
+                CornerRadius="30"    
+                Padding="0"
+                HorizontalOptions="CenterAndExpand" 
+                VerticalOptions="CenterAndExpand">
+            
+                <Label Text="{Binding ScreenPlayer}" 
+                       FontSize="25" 
+                       HorizontalOptions="CenterAndExpand" 
+                       VerticalOptions="CenterAndExpand" 
+                       TextColor="White" 
+                       Padding="25"/>
+        </Frame>
+        
+        <CollectionView ItemsSource="{Binding TicTacToeList}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Span="3" Orientation="Vertical" VerticalItemSpacing="20" />
+            </CollectionView.ItemsLayout>
+
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="box:TicTacToeBox">
+                    <Frame BackgroundColor="White" Padding="0" CornerRadius="20" HeightRequest="80" WidthRequest="80">
+                        <Label Text="{Binding SelectedText}" FontSize="28" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={x:RelativeSource AncestorType={x:Type view:TicTacToeGame}}, Path=SelectedItemCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Frame BackgroundColor="GreenYellow" 
+        CornerRadius="30"    
+        Padding="0"
+        HorizontalOptions="CenterAndExpand" 
+        VerticalOptions="CenterAndExpand"
+        IsVisible="{Binding }"       
+        >
+
+            <Label Text="{Binding Winner}" 
+               FontSize="25" 
+               HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="CenterAndExpand" 
+               TextColor="White" 
+               Padding="25"/>
+        </Frame>
+
+    </VerticalStackLayout>
+</ContentPage>
